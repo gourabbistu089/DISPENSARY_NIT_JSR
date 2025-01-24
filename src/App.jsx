@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 // import Login from './pages/Login';
@@ -15,6 +15,7 @@ import Team from './pages/Team';
 import Ai from './pages/Ai';
 import LoginPage from './pages/Login/LoginPage';
 import Admin from './pages/Admin';
+
 
 const App = () => {
   return (

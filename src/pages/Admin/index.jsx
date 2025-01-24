@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Routes, Route, NavLink, useNavigate} from "react-router-dom";
+import { Routes, Route, NavLink, useNavigate } from "react-router-dom";
 import { FaBars, FaCross } from "react-icons/fa"; // Icon for the "3 dot" menu
 import { IoMdClose } from "react-icons/io";
+import AddNewAdmin from "./AddNewAdmin";
 // import AddNewAdmin from "./AddNewAdmin";
 // import AddStaffDoctor from "./AddStaffDoctor";
 // import AddPatient from "./AddPatient";
@@ -20,6 +21,22 @@ import { IoMdClose } from "react-icons/io";
 // import ConsultedAppointments from "./ConsultedAppointments";
 // import SysAuthorities from "./SysAuthorities";
 
+const routes = [
+  { path: "/admin/add-new-admin", label: "Add New Admin" },
+  { path: "/admin/add-staff-doctor", label: "Add Staff/Doctor" },
+  { path: "/admin/add-new-patient", label: "Add New Patient" },
+  { path: "/admin/add-medicine", label: "Add Medicine to Inventory" },
+  { path: "/admin/remove-admin-staff-doctor", label: "Remove Admin/Staff" },
+  { path: "/admin/sys-authorities", label: "SysAuthorities" },
+  { path: "/admin/new-appointment", label: "New Appointment" },
+  { path: "/admin/view-patient-record", label: "View Patient Records" },
+  { path: "/admin/doc-appointments", label: "Doctor Appointments" },
+  { path: "/admin/consulted-appointments", label: "Consulted Appointments" },
+  { path: "/admin/inventory", label: "View Inventory" },
+  { path: "/admin/patient-history", label: "View Patients History" },
+  { path: "/admin/view-dependent", label: "View All Employees/Dependents" },
+  { path: "/admin/change-password", label: "Change Password" },
+];
 
 // Create a Welcome component for the default route
 const Welcome = () => (
@@ -33,206 +50,39 @@ const Welcome = () => (
 const Admin = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
-    <main className="h-screen flex overflow-hidden">
+    <main className="min-h-screen flex overflow-hidden">
       {/* Sidebar */}
       <aside
         className={`bg-gray-100 shadow-lg overflow-y-auto transform lg:translate-x-0 transition-transform duration-300 ease-in-out ${
-          sidebarOpen ? "lg:w-64 sm:w-64 translate-x-0" : "w-0 -translate-x-full"
+          sidebarOpen
+            ? "lg:w-64 sm:w-64 translate-x-0"
+            : "w-0 -translate-x-full"
         } lg:w-64`}
       >
-
         <div className={`p-4 ${sidebarOpen ? "block" : "hidden"} md:block`}>
-          <h2 
-          onClick={() => setSidebarOpen(false)}
-          className="text-base font-bold mb-4 text-[#274187]  flex items-center justify-between">
+          <h2
+            onClick={() => setSidebarOpen(false)}
+            className="text-base font-bold mb-4 text-[#274187] flex items-center justify-between"
+          >
             <span>Admin Panel</span>
-           {sidebarOpen &&  <IoMdClose size={24}/>}
+            {sidebarOpen && <IoMdClose size={24} />}
           </h2>
           <ul className="font-semibold">
-            <li className="mb-2">
-              <NavLink
-                to="add-new-admin"
-                className={({ isActive }) =>
-                  isActive
-                    ? "block py-2 text-base px-4 rounded-lg bg-gray-200"
-                    : "block py-2 text-base px-4 rounded-lg hover:bg-gray-200"
-                }
-                onClick={() => setSidebarOpen(false)}
-              >
-                Add New Admin
-              </NavLink>
-            </li>
-            <li className="mb-2">
-              <NavLink
-                to="add-staff-doctor"
-                className={({ isActive }) =>
-                  isActive
-                    ? "block py-2 text-base px-4 rounded-lg bg-gray-200"
-                    : "block py-2 text-base px-4 rounded-lg hover:bg-gray-200"
-                }
-                onClick={() => setSidebarOpen(false)}
-              >
-                Add Staff/Doctor
-              </NavLink>
-            </li>
-            <li className="mb-2">
-              <NavLink
-                to="add-new-patient"
-                className={({ isActive }) =>
-                  isActive
-                    ? "block py-2 text-base px-4 rounded-lg bg-gray-200"
-                    : "block py-2 text-base px-4 rounded-lg hover:bg-gray-200"
-                }
-                onClick={() => setSidebarOpen(false)}
-              >
-                Add New Patient
-              </NavLink>
-            </li>
-            <li className="mb-2">
-              <NavLink
-                to="add-medicine"
-                className={({ isActive }) =>
-                  isActive
-                    ? "block py-2 text-base px-4 rounded-lg bg-gray-200"
-                    : "block py-2 text-base px-4 rounded-lg hover:bg-gray-200"
-                }
-                onClick={() => setSidebarOpen(false)}
-              >
-                Add Medicine to Inventory
-              </NavLink>
-            </li>
-            <li className="mb-2">
-              <NavLink
-                to="remove-admin-staff-doctor"
-                className={({ isActive }) =>
-                  isActive
-                    ? "block py-2 text-base px-4 rounded-lg bg-gray-200"
-                    : "block py-2 text-base px-4 rounded-lg hover:bg-gray-200"
-                }
-                onClick={() => setSidebarOpen(false)}
-              >
-                Remove Admin/Staff
-              </NavLink>
-            </li>
-            <li className="mb-2">
-              <NavLink
-                to="SysAuthorities"
-                className={({ isActive }) =>
-                  isActive
-                    ? "block py-2 text-base px-4 rounded-lg bg-gray-200"
-                    : "block py-2 text-base px-4 rounded-lg hover:bg-gray-200"
-                }
-                onClick={() => setSidebarOpen(false)}
-              >
-              SysAuthorities
-              </NavLink>
-            </li>
-            <li className="mb-2">
-              <NavLink
-                to="new-appointment"
-                className={({ isActive }) =>
-                  isActive
-                    ? "block py-2 text-base px-4 rounded-lg bg-gray-200"
-                    : "block py-2 text-base px-4 rounded-lg hover:bg-gray-200"
-                }
-                onClick={() => setSidebarOpen(false)}
-              >
-                New Appointment
-              </NavLink>
-            </li>
-            <li className="mb-2">
-              <NavLink
-                to="view-patient-record"
-                className={({ isActive }) =>
-                  isActive
-                    ? "block py-2 text-base px-4 rounded-lg bg-gray-200"
-                    : "block py-2 text-base px-4 rounded-lg hover:bg-gray-200"
-                }
-                onClick={() => setSidebarOpen(false)}
-              >
-                View Patient Records
-              </NavLink>
-            </li>
-            
-            <li className="mb-2">
-              <NavLink
-                to="doc-appointments"
-                className={({ isActive }) =>
-                  isActive
-                    ? "block py-2 text-base px-4 rounded-lg bg-gray-200"
-                    : "block py-2 text-base px-4 rounded-lg hover:bg-gray-200"
-                }
-                onClick={() => setSidebarOpen(false)}
-              >
-                Doctor Appointments
-              </NavLink>
-            </li>
-            <li className="mb-2">
-              <NavLink
-                to="consulted-appointments"
-                className={({ isActive }) =>
-                  isActive
-                    ? "block py-2 text-base px-4 rounded-lg bg-gray-200"
-                    : "block py-2 text-base px-4 rounded-lg hover:bg-gray-200"
-                }
-                onClick={() => setSidebarOpen(false)}
-              >
-                Consulted Appointments
-              </NavLink>
-            </li>
-            <li className="mb-2">
-              <NavLink
-                to="inventory"
-                className={({ isActive }) =>
-                  isActive
-                    ? "block py-2 text-base px-4 rounded-lg bg-gray-200"
-                    : "block py-2 text-base px-4 rounded-lg hover:bg-gray-200"
-                }
-                onClick={() => setSidebarOpen(false)}
-              >
-                View Inventory
-              </NavLink>
-            </li>
-            
-            <li className="mb-2">
-              <NavLink
-                to="Patient-history"
-                className={({ isActive }) =>
-                  isActive
-                    ? "block py-2 text-base px-4 rounded-lg bg-gray-200"
-                    : "block py-2 text-base px-4 rounded-lg hover:bg-gray-200"
-                }
-                onClick={() => setSidebarOpen(false)}
-              >
-               View Patients History
-              </NavLink>
-            </li>
-            <li className="mb-2">
-              <NavLink
-                to="view-dependent"
-                className={({ isActive }) =>
-                  isActive
-                    ? "block py-2 text-base px-4 rounded-lg bg-gray-200"
-                    : "block py-2 text-base px-4 rounded-lg hover:bg-gray-200"
-                }
-                onClick={() => setSidebarOpen(false)}
-              >
-               View All Employees/ Dependents
-              </NavLink>
-            </li>
-            <li className="mb-2">
-              <NavLink
-                to="change-password"
-                className={({ isActive }) =>
-                  isActive
-                    ? "block py-2 text-base px-4 rounded-lg bg-gray-200"
-                    : "block py-2 text-base px-4 rounded-lg hover:bg-gray-200"
-                }
-                onClick={() => setSidebarOpen(false)}
-              >
-                Change Password
-              </NavLink>
-            </li>
+            {routes.map((route) => (
+              <li key={route.path} className="mb-2">
+                <NavLink
+                  to={route.path}
+                  className={({ isActive }) =>
+                    `block py-2 text-base px-4 rounded-lg ${
+                      isActive ? "bg-gray-200" : "hover:bg-gray-200"
+                    }`
+                  }
+                  onClick={() => setSidebarOpen(false)}
+                >
+                  {route.label}
+                </NavLink>
+              </li>
+            ))}
           </ul>
         </div>
       </aside>
@@ -245,21 +95,22 @@ const Admin = () => {
       >
         {/* 3 Dot Menu for Mobile */}
         <button
-        className="lg:hidden text-gray-600 mb-4 focus:outline-none transform transition-transform duration-300 ease-in-out "
-        onClick={() => setSidebarOpen(!sidebarOpen)}
-        style={{
-          transform: sidebarOpen ? 'rotate(45deg) translateY(5px)' : 'rotate(0deg)',
-        }}
-      >
-        <FaBars size={24} />
-      </button>
-      
- 
-       <div className="" onClick={() => setSidebarOpen(false)}>
-       <Routes>
-          <Route path="/" element={<Welcome />} /> 
-          {/* <Route path="add-new-admin" element={<AddNewAdmin />} />
-          <Route path="add-new-patient" element={<AddPatient />} />
+          className="lg:hidden text-gray-600 mb-4 focus:outline-none transform transition-transform duration-300 ease-in-out "
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+          style={{
+            transform: sidebarOpen
+              ? "rotate(45deg) translateY(5px)"
+              : "rotate(0deg)",
+          }}
+        >
+          <FaBars size={24} />
+        </button>
+
+        <div className="" onClick={() => setSidebarOpen(false)}>
+          <Routes>
+            <Route path="/" element={<Welcome />} />
+            <Route path="add-new-admin" element={<AddNewAdmin />} />
+            {/*<Route path="add-new-patient" element={<AddPatient />} />
           <Route path="add-medicine" element={<AddMedicine />} />
           <Route
             path="remove-admin-staff-doctor"
@@ -294,8 +145,8 @@ const Admin = () => {
             element={<PatientConsultationForm />}
           />
           <Route path="change-password" element={<ChangePassword />} /> */}
-        </Routes>
-       </div>
+          </Routes>
+        </div>
       </section>
     </main>
   );

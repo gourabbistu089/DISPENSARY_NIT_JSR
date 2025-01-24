@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
-import axios from "axios";
-import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { signin } from "../../services/api/authCall";
-import { apiConnector } from "../../services/apiConnector";
 
 const Login = ({ setForgotPassword }) => {
   const [userType, setUserType] = useState("");
