@@ -3,8 +3,7 @@ import { Routes, Route, NavLink, useNavigate } from "react-router-dom";
 import { FaBars, FaCross } from "react-icons/fa"; // Icon for the "3 dot" menu
 import { IoMdClose } from "react-icons/io";
 import AddNewAdmin from "./AddNewAdmin";
-// import AddNewAdmin from "./AddNewAdmin";
-// import AddStaffDoctor from "./AddStaffDoctor";
+import AddStaffDoctor from "./AddStaffDoctor.jsx";
 // import AddPatient from "./AddPatient";
 // import RemoveAdminStaffDoctor from "./RemoveAdminStaffDoctor";
 // import AddMedicine from "./AddMedicine";
@@ -110,6 +109,8 @@ const Admin = () => {
           <Routes>
             <Route path="/" element={<Welcome />} />
             <Route path="add-new-admin" element={<AddNewAdmin />} />
+          <Route path="add-staff-doctor" element={<AddStaffDoctor />} />
+
             {/*<Route path="add-new-patient" element={<AddPatient />} />
           <Route path="add-medicine" element={<AddMedicine />} />
           <Route
@@ -132,7 +133,6 @@ const Admin = () => {
           element={<EditPrescriptionForm/>}
           />
 
-          <Route path="add-staff-doctor" element={<AddStaffDoctor />} />
           <Route path="doc-appointments" element={<DocAppointments />} />
           <Route
             path="consulted-appointments"
