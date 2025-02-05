@@ -4,7 +4,7 @@ import { FaBars, FaCross } from "react-icons/fa"; // Icon for the "3 dot" menu
 import { IoMdClose } from "react-icons/io";
 import AddNewAdmin from "./AddNewAdmin";
 import AddStaffDoctor from "./AddStaffDoctor.jsx";
-// import AddPatient from "./AddPatient";
+import AddPatient from "./AddPatient";
 // import RemoveAdminStaffDoctor from "./RemoveAdminStaffDoctor";
 // import AddMedicine from "./AddMedicine";
 // import PatientHistory from "./PatientHistory";
@@ -111,8 +111,8 @@ const Admin = () => {
             <Route path="add-new-admin" element={<AddNewAdmin />} />
           <Route path="add-staff-doctor" element={<AddStaffDoctor />} />
 
-            {/*<Route path="add-new-patient" element={<AddPatient />} />
-          <Route path="add-medicine" element={<AddMedicine />} />
+            <Route path="add-new-patient" element={<AddPatient />} />
+          {/*<Route path="add-medicine" element={<AddMedicine />} />
           <Route
             path="remove-admin-staff-doctor"
             element={<RemoveAdminStaffDoctor />}
